@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+.PHONY: override_dh_auto_configure	\
+	override_dh_auto_build-indep	\
+	override_dh_install		\
+	override_dh_auto_test           \
+	get-orig-source
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+                -DUSE_EXTERNAL_TINYXML:BOOL=False \
+                -DUSE_HOST_CFLAGS:BOOL=False \
+                -DUSE_UPSTREAM_CFLAGS:BOOL=False \
+                -DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+override_dh_auto_build-indep:
+	dh_auto_build -- doc # Generate Doxygen HTML documentation.
+
+override_dh_install:
+	dh_install -- # Install
+
+        # Get rid of fonts already packaged elsewhere.
+	rm -f debian/gazebo9-common/usr/share/gazebo-*/media/gui/fonts/DejaVuSans.ttf
+
+override_dh_auto_test:
+	# Tests needs an X server running and GPU acceleration
+	true
+
+# Upstream release page is generated dynamically taking long time
+get-orig-source:
+	uscan --timeout 500 --verbose --force-download --repack --compress xz
+
+%:
+	dh $@ --buildsystem=cmake --with bash-completion

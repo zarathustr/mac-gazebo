@@ -1,0 +1,7 @@
+# There is one binary (symlink) with the plain name (no version)
+# with the corresponding manpage, that are the ones really used
+# by the users.
+binary-without-manpage usr/bin/gazebo-9.*
+binary-without-manpage usr/bin/gz-9.*
+binary-without-manpage usr/bin/gzclient-9.*
+binary-without-manpage usr/bin/gzserver-9.*

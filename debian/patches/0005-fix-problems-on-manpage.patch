@@ -1,0 +1,202 @@
+Description: Remove unknown roff commands
+Author: Jose Luis Rivero <jrivero@osrfoundation.org>
+Forwarded: no
+
+diff --git a/tools/gz.1.roff b/tools/gz.1.roff
+index 5af9f47..499046b 100644
+--- a/tools/gz.1.roff
++++ b/tools/gz.1.roff
+@@ -6,9 +6,7 @@
+ .SH "SYNPOSIS"
+ \fBgz\fR \fIcommand\fR [option]\.\.\. [argument]\.\.\.
+ .
+-.UNINDENT
+ .SH COMMANDS
+-.UNINDENT
+ .SS camera
+ .sp
+ .nf
+@@ -25,7 +23,6 @@ A camera name is required.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -50,7 +47,6 @@ List all cameras
+ .B \-f, \-\-follow\fR=\fIarg\fR
+ .
+ Model to follow.
+-.UNINDENT
+ .SS debug
+ .sp
+ .nf
+@@ -65,7 +61,6 @@ return the completion list for a given command.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -78,7 +73,6 @@ Print this help message
+ .B \-o, \-\-option\fR=\fIarg\fR
+ .
+ Show the command options.
+-.UNINDENT
+ .SS help
+ .sp
+ .nf
+@@ -92,7 +86,6 @@ Output information about a gz command.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -101,7 +94,6 @@ Print extra information
+ .B \-h, \-\-help
+ .
+ Print this help message
+-.UNINDENT
+ .SS joint
+ .sp
+ .nf
+@@ -129,7 +121,6 @@ with --vel-p, --vel-i, --vel-d to specify the PID parameters.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -190,7 +181,6 @@ Velocity integral gain.
+ .B \-\-vel\-d\fR=\fIarg\fR
+ .
+ Velocity differential gain.
+-.UNINDENT
+ .SS log
+ .sp
+ .nf
+@@ -206,7 +196,6 @@ an active Gazebo server.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -263,7 +252,6 @@ Specify the encoding (txt, zlib, or bz2) for an output file. Valid in conjunctio
+ .B \-\-filter\fR=\fIarg\fR
+ .
+ Filter output. Valid only with the echo, step, and output commands
+-.UNINDENT
+ .SS marker
+ .sp
+ .nf
+@@ -346,7 +334,6 @@ $ gz marker -m 'action: ADD_MODIFY, type: SPHERE, id: 2, scale: {x:0.2, y:0.4, z
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -399,7 +386,6 @@ Get a list of the visual markers.
+ .B \-y, \-\-layer\fR=\fIarg\fR
+ .
+ Add or move a marker to the specified layer.
+-.UNINDENT
+ .SS model
+ .sp
+ .nf
+@@ -416,7 +402,6 @@ will be used.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -465,7 +450,6 @@ Output model pose as a space separated 6\-tuple: x y z roll pitch yaw.
+ .B \-P, \-\-pose\-P arg pitch in radians.
+ .TP
+ .B \-Y, \-\-pose\-Y arg yaw in radians.
+-.UNINDENT
+ .SS physics
+ .sp
+ .nf
+@@ -481,7 +465,6 @@ the first world found on the Gazebo master will be used.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -514,7 +497,6 @@ Target real\-time update rate.
+ .B \-o, \-\-profile\fR=\fIarg\fR
+ .
+ Preset physics profile.
+-.UNINDENT
+ .SS sdf
+ .sp
+ .nf
+@@ -530,7 +512,6 @@ SDF for use with other options.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -563,7 +544,6 @@ Version of SDF to use with other options.
+ .B \-p, \-\-print\fR=\fIarg\fR
+ .
+ Print arg, useful for debugging and as a conversion tool.
+-.UNINDENT
+ .SS stats
+ .sp
+ .nf
+@@ -579,7 +559,6 @@ the Gazebo master will be used.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -600,7 +579,6 @@ Duration (seconds) to run.
+ .B \-p, \-\-plot
+ .
+ Output comma\-separated values, useful for processing and plotting.
+-.UNINDENT
+ .SS topic
+ .sp
+ .nf
+@@ -616,7 +594,6 @@ the Gazebo master will be used.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .
+@@ -661,7 +638,6 @@ Output data from echo without formatting.
+ .B \-d, \-\-duration\fR=\fIarg\fR
+ .
+ Duration (seconds) to run. Applicable with echo, hz, and bw
+-.UNINDENT
+ .SS world
+ .sp
+ .nf
+@@ -677,7 +653,6 @@ the first world found on the Gazebo master will be used.
+ 
+ .sp
+ Options:
+-.INDENT 0.0
+ .TP
+ .B \-\-verbose
+ .

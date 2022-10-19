@@ -1,0 +1,28 @@
+Description: do not try to install arial and DejaVuSans fonts. 
+ The fonts were removed in the dfsg process and has been replaced using .links
+ file. Remove cmake instruction about it.
+Author: Jose Luis Rivero <jrivero@osrfoundation.org>
+Forwarded: not-needed
+
+diff --git a/media/fonts/CMakeLists.txt b/media/fonts/CMakeLists.txt
+index f974026..88e00ed 100644
+--- a/media/fonts/CMakeLists.txt
++++ b/media/fonts/CMakeLists.txt
+@@ -1,5 +1,4 @@
+-SET (files arial.ttf
+-           console.ttf
++SET (files console.ttf
+            font_arial.png
+            font_matisse_itc.png
+            Gazebo.fontdef
+diff --git a/media/gui/fonts/CMakeLists.txt b/media/gui/fonts/CMakeLists.txt
+index 9cfeec8..7b64ce4 100644
+--- a/media/gui/fonts/CMakeLists.txt
++++ b/media/gui/fonts/CMakeLists.txt
+@@ -1,6 +1,5 @@
+ set (files Font.xsd
+            DejaVuSans-10.font
+-           DejaVuSans.ttf
+            FairChar-30.font
+            fkp-16.font
+            fkp.de.pcf

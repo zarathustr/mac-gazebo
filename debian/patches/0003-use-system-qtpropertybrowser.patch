@@ -1,0 +1,78 @@
+Description: Use system packaged qtpropertybrowser
+Author: Jose Luis Rivero <jrivero@osrfoundation.org>
+Last-Update: 2018-02-15
+
+diff --git a/gazebo/gui/CMakeLists.txt b/gazebo/gui/CMakeLists.txt
+index e71b656..8940724 100644
+--- a/gazebo/gui/CMakeLists.txt
++++ b/gazebo/gui/CMakeLists.txt
+@@ -201,7 +201,7 @@ target_link_libraries(gazebo_gui
+   gazebo_transport
+   gazebo_rendering
+   gazebo_msgs
+-  gzqtpropertybrowser
++  /usr/lib/libqtpropertybrowser.so.4
+   ${Qt5Core_LIBRARIES}
+   ${Qt5Widgets_LIBRARIES}
+   ${ogre_libraries}
+diff --git a/gazebo/gui/ModelListWidget.cc b/gazebo/gui/ModelListWidget.cc
+index d40479c..1e1d4f7 100644
+--- a/gazebo/gui/ModelListWidget.cc
++++ b/gazebo/gui/ModelListWidget.cc
+@@ -43,8 +43,8 @@
+ #include "gazebo/gui/ModelListWidget.hh"
+ #include "gazebo/gui/ModelListWidgetPrivate.hh"
+ #include "gazebo/gui/ModelRightMenu.hh"
+-#include "gazebo/gui/qtpropertybrowser/qttreepropertybrowser.h"
+-#include "gazebo/gui/qtpropertybrowser/qtvariantproperty.h"
++#include "qtpropertybrowser/qttreepropertybrowser.h"
++#include "qtpropertybrowser/qtvariantproperty.h"
+ 
+ #include "gazebo/rendering/Grid.hh"
+ #include "gazebo/rendering/Light.hh"
+diff --git a/gazebo/gui/qtpropertybrowser/CMakeLists.txt b/gazebo/gui/qtpropertybrowser/CMakeLists.txt
+index 0096e67..91fd6d0 100644
+--- a/gazebo/gui/qtpropertybrowser/CMakeLists.txt
++++ b/gazebo/gui/qtpropertybrowser/CMakeLists.txt
+@@ -2,31 +2,21 @@ include (${gazebo_cmake_dir}/GazeboUtils.cmake)
+ add_definitions(${Qt5Core_DEFINITIONS})
+ include_directories(${Qt5Core_INCLUDE_DIRS})
+ 
+-set (sources qtpropertybrowser.cpp 
+-             qtpropertymanager.cpp
+-             qteditorfactory.cpp
+-             qtvariantproperty.cpp
+-             qttreepropertybrowser.cpp
+-             qtbuttonpropertybrowser.cpp
+-             qtgroupboxpropertybrowser.cpp
+-             qtpropertybrowserutils.cpp
+- ) 
+-
+-set (qt_headers qtpropertybrowser.h 
+-                qtpropertymanager.h
+-                qteditorfactory.h
+-                qtvariantproperty.h
+-                qttreepropertybrowser.h
+-                qtbuttonpropertybrowser.h
+-                qtgroupboxpropertybrowser.h
+-                qtpropertybrowserutils_p.h
++set (qt_headers /usr/include/qtpropertybrowser/qtpropertybrowser.h
++                /usr/include/qtpropertybrowser/qtpropertymanager.h
++                /usr/include/qtpropertybrowser/qteditorfactory.h
++                /usr/include/qtpropertybrowser/qtvariantproperty.h
++                /usr/include/qtpropertybrowser/qttreepropertybrowser.h
++                /usr/include/qtpropertybrowser/qtbuttonpropertybrowser.h
++                /usr/include/qtpropertybrowser/qtgroupboxpropertybrowser.h
++                /usr/include/qtpropertybrowser/qtpropertybrowserutils_p.h
+   )
+ 
+ set (resources qtpropertybrowser.qrc)
+ QT5_ADD_RESOURCES(resources_RCC ${resources})
+ 
+-add_library(gzqtpropertybrowser STATIC ${sources} ${resources_RCC})
+-set_target_properties(gzqtpropertybrowser PROPERTIES POSITION_INDEPENDENT_CODE ON)
++#add_library(gzqtpropertybrowser STATIC ${sources} ${resources_RCC})
++#set_target_properties(gzqtpropertybrowser PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ #set(CMAKE_PACKAGE_QTGUI TRUE)
+ #
+ #add_definitions( ${QT_DEFINITIONS} )

@@ -1,0 +1,291 @@
+gazebo (9.0.0+dfsg5-3ubuntu1) bionic; urgency=medium
+
+  * Revert wrong arch-filtering of build-deps, which causes build failures.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 28 Feb 2018 13:41:04 -0800
+
+gazebo (9.0.0+dfsg5-3) unstable; urgency=medium
+
+  * Filter optional dependencies from those arches that does not support build-dep packages
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Tue, 27 Feb 2018 08:53:44 +0000
+
+gazebo (9.0.0+dfsg5-2) unstable; urgency=medium
+
+  * Upload to unsatble
+  * Change graphviz by libgraphviz-dev to fix optional support
+  * Added ignition-fuelt-tools as dependency to enable optional support
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Tue, 20 Feb 2018 15:28:06 +0000
+
+gazebo (9.0.0+dfsg5-1) experimental; urgency=medium
+
+  * Added patch to use roboto system fonts
+  * Added patch to use system qtpropertybrowser
+  * Missing pieces in the copyright file
+  * Remove duplicate dependency on simbody
+  * Do not restrict desktops where gazebo is shown
+  * Fix lintian errors related to copyright
+  * Change to salsa. Break/Replace gazebo7 version
+  * Remove gazebo.menu
+    (https://www.debian.org/doc/debian-policy/#version-4-0-1)
+  * Remove all the SSE logic from rules file
+  * Update TODO file with info about the ode packaging exception
+  * Simplify and improve the README file: move licenses to its own section and
+    use wildcards for listing files when possible
+  * Missing font dependencies
+  * Remove embedded libraries present in code
+  * Added clang-format
+  * Update the way of getting sources
+  * Imported Upstream version 9.0.0+dfsg
+    (Closes: #887931, #874898, #874898)
+  * Use system ccd
+  * Fix watch file
+  * Remove fonts copyright
+  * New upstream version 9.0.0+dfsg5
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Thu, 15 Feb 2018 02:49:23 +0000
+
+gazebo (7.8.1+dfsg-4) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Iain Lane ]
+  * Take patch from Fedora to fix FTBFS when running moc. Update it a bit for
+    current gazebo. (Closes: #882591)
+
+ -- Jochen Sprickerhof <jspricke@debian.org>  Sat, 23 Dec 2017 18:01:02 +0100
+
+gazebo (7.8.1+dfsg-3) unstable; urgency=medium
+
+  * Team upload.
+  * Move dependency according to links file.
+  * Add patch for Q_MOC_RUN (Closes: #882591)
+
+ -- Jochen Sprickerhof <jspricke@debian.org>  Sat, 25 Nov 2017 12:35:51 +0100
+
+gazebo (7.8.1+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+  * strlen patch taken from upstream (Closes: #876562)
+  * Fix fonts dependencies (Closes: #878595, #857393, #857393)
+
+ -- Jochen Sprickerhof <jspricke@debian.org>  Mon, 16 Oct 2017 01:03:51 +0200
+
+gazebo (7.8.1+dfsg-1) unstable; urgency=medium
+
+  * Remove merged patches
+  * Imported Upstream version 7.8.1
+  * Update standards to 4.0.0
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Tue, 05 Sep 2017 19:29:48 +0000
+
+gazebo (7.5.0+dfsg-1) unstable; urgency=medium
+
+  * Imported Upstream version 7.5.0
+  * Don't need webkit anymore
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Mon, 16 Jan 2017 23:54:46 +0000
+
+gazebo (7.3.1+dfsg-3) unstable; urgency=medium
+
+  * Fix use gtest system patch
+    (Closes: #844896)
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Mon, 28 Nov 2016 22:23:17 +0000
+
+gazebo (7.3.1+dfsg-2) unstable; urgency=medium
+
+  [ Gianfranco Costamagna ]
+  * d/p/fix-boost1.62.patch: cherry-pick upstream commit to fix
+    a boost1.62 build failure due to a missing include (Closes: #843243).
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Thu, 10 Nov 2016 11:13:19 +0000
+
+gazebo (7.3.1+dfsg-1) unstable; urgency=medium
+
+  * Imported Upstream version 7.3.1
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Thu, 15 Sep 2016 22:09:38 +0000
+
+gazebo (7.3.0+dfsg-6) unstable; urgency=medium
+
+  * Fix supported arches in libgazebo7-dev package. Thanks to Graham Inggs
+    (Closes: #837121)
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Wed, 14 Sep 2016 17:00:37 +0000
+
+gazebo (7.3.0+dfsg-5) unstable; urgency=medium
+
+  * Use the current list of successfull builds of kido (amd64 arm64 i386
+    ppc64el alpha mipsel) to fix architectures in control file. Thank to
+    Jeremy Bicha. (Closes: #837121)
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Mon, 12 Sep 2016 16:23:58 +0000
+
+gazebo (7.3.0+dfsg-4) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Peter Michael Green ]
+  * [e3cbcc2] Restrict (build-)dependency on libkido-dev to architectures
+              where that package is actually available (amd64, arm64, i386,
+              ppc64el and alpha). (Closes: #837121)
+
+  [ Anton Gladky ]
+  * [bafb23a] Remove myself from uploaders.
+
+ -- Anton Gladky <gladk@debian.org>  Fri, 09 Sep 2016 21:21:16 +0200
+
+gazebo (7.3.0+dfsg-3) unstable; urgency=medium
+
+  [ Jochen Sprickerhof ]
+  * Add libcurl-dev as an alternative to simplify apts resolution
+
+  [ Jose Luis Rivero ]
+  * Include patch to fix tinyxml constant removal
+    (Closes: #835427)
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Mon, 29 Aug 2016 00:44:02 +0000
+
+gazebo (7.3.0+dfsg-2) unstable; urgency=medium
+
+   * Patch to fix linking with gcc6 (Closes: #831176)
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Thu, 21 Jul 2016 15:31:57 +0000
+
+gazebo (7.3.0+dfsg-1) unstable; urgency=medium
+
+  * Explicitly use of external tinyxml copy
+  * Imported Upstream version 7.3.0
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Thu, 14 Jul 2016 18:53:12 +0000
+
+gazebo (7.0.0+dfsg-2) unstable; urgency=medium
+
+  * [9916e19] Fix Breaks/Replaces dependecies. (Closes: #817189)
+  * [e6f3533] Remove dbg-package.
+  * [8549abf] Apply cme fix dpkg.
+
+ -- Anton Gladky <gladk@debian.org>  Sat, 12 Mar 2016 20:56:24 +0100
+
+gazebo (7.0.0+dfsg-1) unstable; urgency=medium
+
+  * Need sdformat4 in gazebo7
+    (Closes: #813001)
+  * Add libqtwebkit dependency
+  * Imported Upstream version 7.0.0
+  * Migrate all package metadata to gazebo7
+  * Remove patch. Circular dependencies problem is fixed upstream
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Tue, 26 Jan 2016 13:49:54 +0100
+
+gazebo (6.5.0+dfsg-2) unstable; urgency=medium
+
+  [ Jose Luis Rivero ]
+  * [7a3cc42] Remove player as dependency. (Closes: #802032)
+
+  [ Anton Gladky ]
+  * [6f51db4] Replace deprecated FFmpeg API. (Closes: #803816)
+  * [7c0b8f1] Apply cme fix dpkg-control.
+  * [37f9b28] Add myself to uploaders.
+
+ -- Anton Gladky <gladk@debian.org>  Tue, 10 Nov 2015 21:41:54 +0100
+
+gazebo (6.5.0+dfsg-1) unstable; urgency=medium
+
+  * Added filter to gdp.conf
+  * Imported Upstream version 6.5.0
+  * Migrate patch to use FindGtest from PCL lib
+  * Removed patches merged upstream and update the reamining ones.
+  * Change all gazebo5 package references to gazebo6
+  * Added patch to use system gtest
+  * Added patch to fix ciruclar linking problem in gz
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Mon, 26 Oct 2015 17:04:30 +0100
+
+gazebo (5.0.1+dfsg-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/patches/0010-bullet-2.83.patch: Apply upstream patch to fix build
+    against bullet 2.83. (Closes: #792992)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 27 Jul 2015 18:35:36 +0200
+
+gazebo (5.0.1+dfsg-2) unstable; urgency=medium
+
+  * [208ddf2] Disable robot-player-dev support (see #787007)
+    (Closes: #787007)
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Fri, 29 May 2015 19:42:29 +0200
+
+gazebo (5.0.1+dfsg-1) unstable; urgency=medium
+
+  * Team upload.
+  * Upload into unstable
+
+ -- Anton Gladky <gladk@debian.org>  Sat, 09 May 2015 23:42:37 +0200
+
+gazebo (5.0.1+dfsg-1~exp3) experimental; urgency=medium
+
+  * [337a3cc] Fix problems with upgrade paths
+    (Closes: #781651, #782104, #782105)
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Wed, 08 Apr 2015 02:02:08 +0200
+
+gazebo (5.0.1+dfsg-1~exp2) experimental; urgency=medium
+
+  * [99f894c] Backport from upstream a patch to solve GAZEBO_MODEL_PATH bug
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Wed, 25 Mar 2015 18:17:06 +0000
+
+gazebo (5.0.1+dfsg-1~exp1) experimental; urgency=medium
+
+  * [eacde0a] Fix patch to remove baemuk license
+  * [cb7f2a6] Added the Ronn2Man license
+  * [74d51bd] Remove old baemuk license
+  * [3ad9ccc] Include missing license files
+  * [59db7c2] Update ann files copyright
+  * [5ee8de5] Added maiden copyright
+  * [03f23fd] Update Dejavu font copyright. Include license
+  * [da384e9] Include rtshader files license
+  * [a28256d] Update OSRF copyright to 2015
+  * [2c7763e] Remove wrong included license
+  * [969bf4c] Remove maiden.ttf font. Not in use
+  * [65d716c] Remove duplicate robot-player-dev
+  * [a6c50d6] Fix all lintian warnings in copyright file
+  * [f2a16d5] Added libgazebo6-dev transitional package
+  * [4b24607] Imported Upstream version 5.0.1. (Closes: #766748)
+  * [556803f] Update install files to the new version
+  * [3231500] Rename -dev file to libgazebo6-dev
+  * [b6b788a] Update control file to gazebo6
+  * [922909e] Update all references to gazebo3 to gazebo6
+  * [cb4df5e] Remove patches that are now in upstream code
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Thu, 12 Feb 2015 02:39:29 +0000
+
+gazebo (3.0.0+dfsg-3) unstable; urgency=medium
+
+  * Team upload.
+  * [84c0ad8] Simplify d/rules. Fix install-command. (Closes: #766303)
+
+ -- Anton Gladky <gladk@debian.org>  Thu, 13 Nov 2014 17:58:47 +0100
+
+gazebo (3.0.0+dfsg-2) unstable; urgency=medium
+
+  * Enable simbody support
+  * Enable player support
+  * Enable gdal support
+  * Update standard version to 3.9.6
+  * Added copyright for fcl (thanks to Thorsten Alteholz)
+  * Modify skyx copyright to be LGPLv2+
+  * Missing command to get DEB_HOST_ARCH in rules file
+  * Fix font file linking (Closes: #766303)
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Tue, 28 Oct 2014 22:44:07 +0000
+
+gazebo (3.0.0+dfsg-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #705440)
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Tue, 17 Jun 2014 14:50:35 +0200

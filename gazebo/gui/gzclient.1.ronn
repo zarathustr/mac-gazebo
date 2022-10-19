@@ -1,0 +1,33 @@
+gzclient -- Gazebo GUI Client
+=============================================
+
+## SYNOPSIS
+
+`gzclient` [options]
+
+## DESCRIPTION
+
+Gazebo GUI client which allows visualization and user interaction.
+
+## OPTIONS
+
+* -v, --version :
+ Output version information.
+* --verbose :
+ Increase the messages written to the terminal.
+* -h, --help :
+ Produce this help message.
+* --gui-client-plugin arg :
+ Load a GUI plugin.
+* -g, --gui-plugin arg :
+ Load a System plugin (deprecated, backwards compatibility reasons).
+
+
+## AUTHOR
+  Open Source Robotics Foundation
+
+## COPYRIGHT
+  Copyright (C) 2012 Open Source Robotics Foundation
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.

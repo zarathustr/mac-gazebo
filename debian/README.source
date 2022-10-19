@@ -1,0 +1,5 @@
+The original release has been purged from the arial.ttf font that is not 
+free to distribute. The replacement is done in rules file, using a liberation
+ttf.
+
+The cleanup script can be found in the dfsg_clean branch: cleanup-script.sh 

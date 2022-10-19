@@ -1,0 +1,36 @@
+#!/bin/sh
+# autopkgtest check: Build and run a program against glib, to verify that the
+# headers and pkg-config file are installed correctly
+# (C) 2012 Jose Luis Rivero
+# Author: Jose Luis Rivero <jrivero@osrfoundation.org>
+
+set -e
+
+WORKDIR=$(mktemp -d)
+trap "rm -rf $WORKDIR" 0 INT QUIT ABRT PIPE TERM
+cd $WORKDIR
+cat <<EOF > gazebotest.c
+#include <gazebo/common/Time.hh>
+#include <gazebo/common/Event.hh>
+
+void callback()
+{ }
+
+int main()
+{
+    gazebo::event::EventT<void ()> evt;
+    gazebo::event::ConnectionPtr conn = evt.Connect(std::bind(&callback));
+
+    conn.reset();
+
+    evt();
+
+    return 0;
+}
+EOF
+
+g++ -o gazebotest gazebotest.c `pkg-config --cflags --libs gazebo`
+echo "build: OK"
+[ -x gazebotest ]
+./gazebotest
+echo "run: OK"

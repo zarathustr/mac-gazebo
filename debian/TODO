@@ -1,0 +1,6 @@
+* Purge Gazebo from its external dependencies.
+Currently, ODE cannot be purged due to local patches.
+Waiting for upstream release(?)
+
+See full information in the Fedora packaging committee:
+- https://pagure.io/packaging-committee/issue/317

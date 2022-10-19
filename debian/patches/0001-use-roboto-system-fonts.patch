@@ -1,0 +1,38 @@
+Description: Use system packaged roboto fonts
+Author: Jose Luis Rivero <jrivero@osrfoundation.org>
+Last-Update: 2018-02-15
+
+diff -r 9887261d5b3b gazebo/gui/resources.qrc
+--- a/gazebo/gui/resources.qrc	Tue Feb 13 01:55:43 2018 +0000
++++ b/gazebo/gui/resources.qrc	Thu Feb 15 19:48:33 2018 +0000
+@@ -102,18 +102,17 @@
+   <file>images/avi.svg</file>
+   <file>images/v4l.svg</file>
+   <file>images/video_camera.svg</file>
+-
+-  <file>fonts/Roboto-Black.ttf</file>
+-  <file>fonts/Roboto-BlackItalic.ttf</file>
+-  <file>fonts/Roboto-Bold.ttf</file>
+-  <file>fonts/Roboto-BoldItalic.ttf</file>
+-  <file>fonts/Roboto-Italic.ttf</file>
+-  <file>fonts/Roboto-Light.ttf</file>
+-  <file>fonts/Roboto-LightItalic.ttf</file>
+-  <file>fonts/Roboto-Medium.ttf</file>
+-  <file>fonts/Roboto-MediumItalic.ttf</file>
+-  <file>fonts/Roboto-Regular.ttf</file>
+-  <file>fonts/Roboto-Thin.ttf</file>
+-  <file>fonts/Roboto-ThinItalic.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-Black.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-BlackItalic.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-Bold.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-BoldItalic.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-Italic.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-Light.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-LightItalic.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-Medium.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-MediumItalic.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-Regular.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-Thin.ttf</file>
++  <file>/usr/share/fonts/truetype/roboto/hinted/Roboto-ThinItalic.ttf</file>
+ </qresource>
+ </RCC>

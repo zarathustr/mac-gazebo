@@ -1,0 +1,7 @@
+usr/bin/gz*
+usr/bin/gazebo*
+usr/share/gazebo/*
+usr/share/gazebo-*/setup.sh
+usr/share/man/man1/*
+gazebo/gui/images/gazebo.svg usr/share/icons/hicolor/scalable/apps/
+debian/gazebo.desktop usr/share/applications/

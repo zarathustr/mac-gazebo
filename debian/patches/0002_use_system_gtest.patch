@@ -1,0 +1,101 @@
+Description: Use system packaged gtest
+Author: Jose Luis Rivero <jrivero@osrfoundation.org>
+Last-Update: 2016-10-26
+
+--- /dev/null
++++ b/cmake/FindGtest.cmake
+@@ -0,0 +1,40 @@
++###############################################################################
++# Find GTest
++#
++# This sets the following variables:
++# GTEST_FOUND - True if GTest was found.
++# GTEST_INCLUDE_DIRS - Directories containing the GTest include files.
++# GTEST_SRC - Directories containing the GTest source files.
++
++if(CMAKE_SYSTEM_NAME STREQUAL Linux)
++    set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} /usr /usr/local)
++endif(CMAKE_SYSTEM_NAME STREQUAL Linux)
++if(APPLE)
++  list(APPEND CMAKE_INCLUDE_PATH /opt/local)
++  set(CMAKE_FIND_FRAMEWORK NEVER)
++endif()
++
++find_path(GTEST_INCLUDE_DIR gtest/gtest.h
++    HINTS "${GTEST_ROOT}" "$ENV{GTEST_ROOT}"
++    PATHS "$ENV{PROGRAMFILES}/gtest" "$ENV{PROGRAMW6432}/gtest"
++    PATHS "$ENV{PROGRAMFILES}/gtest-1.7.0" "$ENV{PROGRAMW6432}/gtest-1.7.0"
++    PATH_SUFFIXES gtest include/gtest include)
++
++find_path(GTEST_SRC_DIR src/gtest-all.cc
++    HINTS "${GTEST_ROOT}" "$ENV{GTEST_ROOT}"
++    PATHS "$ENV{PROGRAMFILES}/gtest" "$ENV{PROGRAMW6432}/gtest"
++    PATHS "$ENV{PROGRAMFILES}/gtest-1.7.0" "$ENV{PROGRAMW6432}/gtest-1.7.0"
++    PATH /usr/src/gtest
++    PATH_SUFFIXES gtest src/gtest)
++
++set(GTEST_INCLUDE_DIRS ${GTEST_INCLUDE_DIR})
++set(CMAKE_FIND_FRAMEWORK)
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(Gtest DEFAULT_MSG GTEST_INCLUDE_DIR GTEST_SRC_DIR)
++
++mark_as_advanced(GTEST_INCLUDE_DIR GTEST_SRC_DIR)
++
++if(GTEST_FOUND)
++  message(STATUS "GTest found (include: ${GTEST_INCLUDE_DIRS}, src: ${GTEST_SRC_DIR})")
++endif(GTEST_FOUND)
+
+diff --git a/cmake/GazeboUtils.cmake b/cmake/GazeboUtils.cmake
+index 974a6d2..764dd28 100644
+--- a/cmake/GazeboUtils.cmake
++++ b/cmake/GazeboUtils.cmake
+@@ -193,7 +193,6 @@ endmacro()
+ # This should be migrated to more fine control solution based on set_property APPEND
+ # directories. It's present on cmake 2.8.8 while precise version is 2.8.7
+ link_directories(${PROJECT_BINARY_DIR}/test)
+-include_directories("${PROJECT_SOURCE_DIR}/test/gtest/include")
+ include (${gazebo_cmake_dir}/GazeboTestUtils.cmake)
+ 
+ #################################################
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 975bed1..3331607 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -1,12 +1,13 @@
++include (${gazebo_cmake_dir}/FindGtest.cmake)
++
+ include_directories (
+   ${ODE_INCLUDE_DIRS}
+   ${OPENGL_INCLUDE_DIR}
+   ${OGRE_INCLUDE_DIRS}
+   ${SDFormat_INCLUDE_DIRS}
+   ${Boost_INCLUDE_DIRS}
+-  ${PROJECT_SOURCE_DIR}/test/gtest/include
+-  ${PROJECT_SOURCE_DIR}/test/gtest
+-  ${PROJECT_SOURCE_DIR}/test
++  ${GTEST_INCLUDE_DIRS}/gtest/
++  ${GTEST_SRC_DIR}
+ )
+ 
+ link_directories(
+@@ -24,8 +25,8 @@ endif()
+ configure_file (test_config.h.in ${PROJECT_BINARY_DIR}/test_config.h)
+ 
+ # Build gtest
+-add_library(gtest STATIC gtest/src/gtest-all.cc)
+-add_library(gtest_main STATIC gtest/src/gtest_main.cc)
++add_library(gtest STATIC ${GTEST_SRC_DIR}/src/gtest-all.cc)
++add_library(gtest_main STATIC ${GTEST_SRC_DIR}/src/gtest_main.cc)
+ target_link_libraries(gtest_main gtest)
+ set(GTEST_LIBRARY "${PROJECT_BINARY_DIR}/test/libgtest.a")
+ set(GTEST_MAIN_LIBRARY "${PROJECT_BINARY_DIR}/test/libgtest_main.a")
+@@ -34,6 +35,8 @@ execute_process(COMMAND cmake -E remove_directory ${CMAKE_BINARY_DIR}/test_resul
+ execute_process(COMMAND cmake -E make_directory ${CMAKE_BINARY_DIR}/test_results)
+ include_directories(${GTEST_INCLUDE_DIRS})
+ 
++include_directories(${PROJECT_SOURCE_DIR}/test)
++
+ add_subdirectory(plugins)
+ 
+ set(TEST_TYPE "PERFORMANCE")
